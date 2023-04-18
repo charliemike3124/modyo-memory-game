@@ -1,28 +1,57 @@
 <template>
   <div class="card-wrapper">
     <div class="card" ref="card">
-      <div class="card-face card-front">
-        <img :src="frontCard" alt="Front of card" />
-      </div>
       <div class="card-face card-back">
         <img :src="backCard" alt="Back of card" />
+      </div>
+      <div class="card-face card-front">
+        <img :src="imageUrl || frontCard" alt="Front of card" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import backCard from '@/assets/back-card.png'
-import frontCard from '@/assets/front-card.png'
+import { ref, onMounted, defineProps } from 'vue';
+import backCard from '@/assets/back-card.png';
+import frontCard from '@/assets/front-card.png';
 
-const card = ref(null)
+const card = ref(null);
+const flipped = ref(false);
+const locked = ref(false);
+
+const emit = defineEmits<{
+  (e: 'selectCard', id: string, imageUrl: string): void;
+}>();
+
+const props = defineProps({
+  imageUrl: String,
+  id: String
+});
+
+function flip() {
+  if (!locked.value) {
+    card.value.classList.toggle('card-flipped');
+    flipped.value = !flipped.value;
+  }
+}
+
+function selectCard() {
+  if (!locked.value) {
+    card.value.classList.toggle('card-flipped');
+    flipped.value = !flipped.value;
+    emit('selectCard', props.id, props.imageUrl);
+  }
+}
+
+defineExpose({
+  flip,
+  id: props.id
+});
 
 onMounted(() => {
-  card.value.addEventListener('click', () => {
-    card.value.classList.toggle('card-flipped')
-  })
-})
+  card.value.addEventListener('click', () => selectCard());
+});
 </script>
 
 <style>

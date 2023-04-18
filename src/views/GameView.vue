@@ -19,11 +19,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import Board from '../components/Board.vue'
-import { useGameStore } from '../stores/game'
+import { onMounted } from 'vue';
+import Board from '../components/Board.vue';
+import { useGameStore } from '../stores/game';
+import router from '@/router';
 
-const gameStore = useGameStore()
+const gameStore = useGameStore();
 
-onMounted(() => {})
+onMounted(() => {
+  if (!gameStore.name || !gameStore.difficulty) {
+    router.push('/');
+  }
+});
 </script>
