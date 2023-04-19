@@ -1,20 +1,26 @@
-type Difficulty = {
-  type: Easy | Medium | Hard;
+interface Difficulty {
+  name: string;
+  duration: number;
+  tries: number;
+}
+
+const easy: Difficulty = {
+  name: 'Easy',
+  duration: 5000,
+  tries: 5
 };
 
-interface Easy {
-  name: 'Easy';
-  duration: 6;
-}
+const medium: Difficulty = {
+  name: 'Medium',
+  duration: 3500,
+  tries: 4
+};
 
-interface Medium {
-  name: 'Medium';
-  duration: 4;
-}
+const hard: Difficulty = {
+  name: 'Hard',
+  duration: 2500,
+  tries: 2
+};
 
-interface Hard {
-  name: 'Hard';
-  duration: 2;
-}
-
-export type { Difficulty, Easy, Medium, Hard };
+export type { Difficulty };
+export { easy, medium, hard };

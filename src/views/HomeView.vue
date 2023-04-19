@@ -23,10 +23,13 @@
           v-model="gameStore.difficulty"
         >
           <option :value="null" disabled>Select difficulty</option>
-          <option :value="{ type: { name: 'Easy', duration: 6 } }">Easy</option>
-          <option :value="{ type: { name: 'Medium', duration: 4 } }">Medium</option>
-          <option :value="{ type: { name: 'Hard', duration: 2 } }">Hard</option>
+          <option :value="easy">Easy</option>
+          <option :value="medium">Medium</option>
+          <option :value="hard">Hard</option>
         </select>
+        <p class="mt-2 italic text-xs text-gray-300">
+          Difficulty impacts card memorization time and selection attempts.
+        </p>
         <button
           :disabled="playDisabled"
           :class="playDisabled ? 'opacity-50' : ''"
@@ -44,6 +47,7 @@ import modyo from '@/assets/modyo.png';
 import { useGameStore } from '../stores/game';
 import router from '@/router';
 import { computed } from '@vue/reactivity';
+import { easy, medium, hard } from '@/models/gameModels';
 
 const gameStore = useGameStore();
 

@@ -5,9 +5,9 @@ import type { Difficulty } from '@/models/gameModels';
 
 export const useGameStore = defineStore('game', () => {
   const name = ref('');
-  const positiveScore = ref(0);
-  const negativeScore = ref(0);
+  const tries = ref(0);
+  const endgameText = ref(``);
   const difficulty: Ref<Difficulty | null> = ref(null);
 
-  return { name, positiveScore, negativeScore, difficulty };
+  return { name, tries, endgameText, difficulty };
 });

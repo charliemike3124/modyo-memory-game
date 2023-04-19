@@ -17,11 +17,10 @@ import backCard from '@/assets/back-card.png';
 import frontCard from '@/assets/front-card.png';
 
 const card = ref(null);
-const flipped = ref(false);
-const locked = ref(false);
+const flipped = ref(true);
 
 const emit = defineEmits<{
-  (e: 'selectCard', id: string, imageUrl: string): void;
+  (e: 'selectCard', flip: Function, imageUrl: string): void;
 }>();
 
 const props = defineProps({
@@ -30,23 +29,21 @@ const props = defineProps({
 });
 
 function flip() {
-  if (!locked.value) {
-    card.value.classList.toggle('card-flipped');
-    flipped.value = !flipped.value;
-  }
+  card.value.classList.toggle('card-flipped');
+  flipped.value = !flipped.value;
 }
 
 function selectCard() {
-  if (!locked.value) {
-    card.value.classList.toggle('card-flipped');
-    flipped.value = !flipped.value;
-    emit('selectCard', props.id, props.imageUrl);
+  if (!flipped.value) {
+    flip();
+    emit('selectCard', flip, props.imageUrl || frontCard);
   }
 }
 
 defineExpose({
   flip,
-  id: props.id
+  id: props.id,
+  flipped
 });
 
 onMounted(() => {
@@ -65,7 +62,7 @@ onMounted(() => {
   height: 220px;
   transform-style: preserve-3d;
   transition: transform 0.5s;
-  margin: 10px;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 640px) {
