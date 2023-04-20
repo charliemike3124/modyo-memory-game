@@ -12,13 +12,13 @@ const easy: Difficulty = {
 
 const medium: Difficulty = {
   name: 'Medium',
-  duration: 3500,
+  duration: 3000,
   tries: 4
 };
 
 const hard: Difficulty = {
   name: 'Hard',
-  duration: 2500,
+  duration: 2000,
   tries: 2
 };
 
