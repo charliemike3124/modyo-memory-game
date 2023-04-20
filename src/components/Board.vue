@@ -102,7 +102,7 @@ function checkWinCondition() {
   // Player wins when all cards are flipped before attempts are exhausted
   const playerWon = cardRefs.value.every((card) => card.flipped === true);
   if (playerWon) {
-    gameStore.endgameText = 'You win! Well done!';
+    gameStore.endgameText = `You win! Well done ${gameStore.name}!`;
     gameStarted.value = false;
     initializeBoard();
   }

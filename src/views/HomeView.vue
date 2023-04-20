@@ -48,7 +48,9 @@ import { useGameStore } from '../stores/game';
 import router from '@/router';
 import { computed } from '@vue/reactivity';
 import { easy, medium, hard } from '@/models/gameModels';
+import { onMounted } from 'vue';
 
+const nameKey = 'userName';
 const gameStore = useGameStore();
 
 const playDisabled = computed(() => {
@@ -56,8 +58,13 @@ const playDisabled = computed(() => {
 });
 
 function onSubmit() {
+  window.localStorage.setItem(nameKey, gameStore.name);
   router.push('/Game');
 }
+
+onMounted(() => {
+  gameStore.name = window.localStorage.getItem(nameKey) || '';
+});
 </script>
 
 <style></style>
