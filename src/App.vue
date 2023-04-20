@@ -3,7 +3,7 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <div class="bg-gradient-to-r min-h-screen">
+  <div class="custom-bg min-h-screen">
     <RouterView />
   </div>
 </template>
@@ -14,7 +14,7 @@ html {
   overflow-y: hidden;
 }
 
-.bg-gradient-to-r {
+.custom-bg {
   background-image: radial-gradient(
     circle 1005px at 1.5% 0%,
     rgba(76, 82, 255, 1) 0%,
