@@ -8,9 +8,9 @@ This is a game to test the memorization skills of the user. The instructions are
 - If all cards are face-up, you win. Otherwise, you lose if you run out of attempts.
 
 The game has 3 difficulties:
-Easy: 5 seconds to memorize and a max 5 failed attempts.
-Medium: 3 seconds to memorize and a max 4 failed attempts.
-Hard: 2 seconds to memorize and a max 2 failed attempts.
+- Easy: 5 seconds to memorize and a max 5 failed attempts.
+- Medium: 3 seconds to memorize and a max 4 failed attempts.
+- Hard: 2 seconds to memorize and a max 2 failed attempts.
 
 You can also access this game through this link: https://modyo-memory-game.web.app/
 
